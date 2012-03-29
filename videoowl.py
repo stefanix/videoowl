@@ -31,8 +31,20 @@ default_file_patterns = [
 
 
 def ffmpeg_convert(item_abs, format, frame_size, bitrate):
-    command = 'export FFMPEG_DATADIR=~/bin/ffmpeg_presets; '
-    command += "ffmpeg -threads 4 -i " + item_abs + " "
+    ffmpeg = ""
+    ffmpeg_presets = ""
+    if sys.platform == "darwin":
+        ffmpeg = os.path.join(data_root(), 'ffmpeg_osx', 'ffmpeg')
+        ffmpeg_presets = os.path.join(data_root(), 'ffmpeg_osx', 'ffmpeg_presets')
+    elif sys.platform == "win32":
+        ffmpeg = os.path.join(data_root(), 'ffmpeg_win', 'ffmpeg.exe')
+        ffmpeg_presets = os.path.join(data_root(), 'ffmpeg_win', 'ffmpeg_presets')
+    elif sys.platform == "linux" or sys.platform == "linux2":
+        ffmpeg = os.path.join(data_root(), 'ffmpeg_linux', 'ffmpeg')    
+        ffmpeg_presets = os.path.join(data_root(), 'ffmpeg_linux', 'ffmpeg_presets')
+        
+    command = "export FFMPEG_DATADIR=" + ffmpeg_presets + "; "
+    command += ffmpeg + " -threads 4 -i " + item_abs + " "
     command += "-vcodec " + formats[format]['vcodec'] + " "
     command += "-s " + presets[frame_size]['s'] + " "
     command += "-b " + presets[frame_size]['b'][bitrate] + " "
@@ -41,6 +53,7 @@ def ffmpeg_convert(item_abs, format, frame_size, bitrate):
     command += "-ar 48000 -ac 2 "
     command += formats[format]['more_options'] + " "
     command += os.path.splitext(os.path.basename(item_abs))[0] + "." + format
+    
     if args.debug:
         print command
     else:

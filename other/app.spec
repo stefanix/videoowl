@@ -16,15 +16,15 @@ def add_resource_files(file_list):
 target_location = os.path.join('dist', 'videoowl')
 if sys.platform == "darwin":
     target_location = os.path.join('dist_osx', 'videoowl')
-    add_resource_files( glob('../ffmpeg_osx/*') )
+    add_resource_files( glob('../ffmpeg_osx/ffmpeg') )
     add_resource_files( glob('../ffmpeg_osx/ffmpeg_presets/*') )
 elif sys.platform == "win32":
     target_location = os.path.join('dist_win', 'videoowl.exe')
-    add_resource_files( glob('../ffmpeg_win/*') )
+    add_resource_files( glob('../ffmpeg_win/ffmpeg.exe') )
     add_resource_files( glob('../ffmpeg_win/ffmpeg_presets/*') )
 elif sys.platform == "linux" or sys.platform == "linux2":
     target_location = os.path.join('dist_linux', 'videoowl')
-    add_resource_files( glob('../ffmpeg_linux/*') )
+    add_resource_files( glob('../ffmpeg_linux/ffmpeg') )
     add_resource_files( glob('../ffmpeg_linux/ffmpeg_presets/*') )
 
 
