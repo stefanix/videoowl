@@ -6,6 +6,14 @@ Input files are selected by providing a directory and a regex pattern. Optionall
 Output files are currently written into the directory from which videoowl is called.
 
 
+Installation
+------------
+
+From the "Downloads" section get the installer and run it. VideoOwl will be installed as one file here: /usr/local/bin/videoowl. This is part of the search path which means videoowl can be executed from anywhere in the Terminal.
+
+To uninstall simply delete /usr/local/bin/videoowl.
+
+
 
 Usage
 -------
