@@ -18,7 +18,7 @@ Output files are currently written into the directory from which videoowl is cal
 Installation
 ------------
 
-From the [downloads section](https://github.com/stefanix/videoowl/downloads) get the installer and run it. VideoOwl will be installed as one file here: /usr/local/bin/videoowl. This is part of the search path which means videoowl can be executed from anywhere in the Terminal.
+From the [downloads section](https://github.com/stefanix/videoowl/downloads) get the OSX installer and run it. VideoOwl will be installed as one file here: /usr/local/bin/videoowl. This is part of the search path which means videoowl can be executed from anywhere in the Terminal.
 
 To uninstall simply delete /usr/local/bin/videoowl.
 
