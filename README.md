@@ -1,15 +1,24 @@
 
-VideoOwl is a video converter that can take almost any video file and transcode it to mp4 or webm. The supported output frame resolutions are all 1.77:1 aspect ratio and can be any of the following: 240p, 360p, 480p, 720p, 1080p. 
+Videoowl is a video converter that can take almost any video file and transcode it to mp4 or webm. The supported output frame resolutions are all 1.77:1 aspect ratio and can be any of the following: 240p, 360p, 480p, 720p, 1080p. 
 
 Input files are selected by providing a directory and a regex pattern. Optionally videoowl also traverses (option -r) all sub-directores and picks files based on the regex pattern. By default it picks most video formats.
 
 Output files are currently written into the directory from which videoowl is called.
 
+### Examples
+
+	- `videoowl`
+	  - converts all video files in the current directory to 480p mp4
+	- `videoowl -s 720p -f webm -b high`
+	  - converts all videos in the current directory to 720p webm (at higher than normal quality)
+	- `videoowl -r -p ".avi|.mov" videos/`
+	  - converts recursively videos in the videos/ directory that contain ".avi" or ".mov" in the file name (also defaults to 480p mp4)
+
 
 Installation
 ------------
 
-From the "Downloads" section get the installer and run it. VideoOwl will be installed as one file here: /usr/local/bin/videoowl. This is part of the search path which means videoowl can be executed from anywhere in the Terminal.
+From the [downloads section](https://github.com/stefanix/videoowl/downloads) get the installer and run it. VideoOwl will be installed as one file here: /usr/local/bin/videoowl. This is part of the search path which means videoowl can be executed from anywhere in the Terminal.
 
 To uninstall simply delete /usr/local/bin/videoowl.
 
@@ -51,4 +60,4 @@ optional arguments:
 License
 --------
 
-VideoOwl is released under the GPL v3 and  the bundled ffmpeg is LGPL v2.1.
+Videoowl is released under the GPL v3 and  the bundled ffmpeg is LGPL v2.1.
