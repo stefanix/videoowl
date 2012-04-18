@@ -3,6 +3,8 @@ Videoowl is a video converter that can take almost any video file and transcode 
 
 Input files are selected by providing a directory and a regex pattern. Optionally videoowl also traverses (option -r) all sub-directores and picks files based on the regex pattern. By default it picks most video formats.
 
+Video output bitrate can be optionally specified with the -b option like: -b 3000k. Three sensible presets also exist: high, normal, low which work well under normal circumstances.
+
 Output files are currently written into the directory from which videoowl is called.
 
 ### Examples
