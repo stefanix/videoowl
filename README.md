@@ -10,11 +10,11 @@ Output files are currently written into the directory from which videoowl is cal
 ### Examples
 
 - `videoowl`
-  - converts all video files in the current directory to 480p mp4
+  - converts all video files in the current directory to mp4 at same as input resolution
 - `videoowl -s 720p -f webm -b high`
   - converts all videos in the current directory to 720p webm (at higher than normal quality)
 - `videoowl -r -p ".avi|.mov" videos/`
-  - converts recursively videos in the videos/ directory that contain ".avi" or ".mov" in the file name (also defaults to 480p mp4)
+  - converts recursively videos in the videos/ directory that contain ".avi" or ".mov" in the file name (also defaults to mp4)
 
 
 Installation
