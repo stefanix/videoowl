@@ -5,6 +5,7 @@ import os, sys, re, argparse
 VERSION = 'v12.03'
 
 presets = {}
+presets['same'] = {'s':'same', 'b':{'high':'6000k', 'normal':'4000k', 'low':'2000k'}, 'ab':'128k'}
 presets['1080p'] = {'s':'1920x1080', 'b':{'high':'8000k', 'normal':'6000k', 'low':'4000k'}, 'ab':'128k'}
 presets['720p'] = {'s':'1280x720', 'b':{'high':'6000k', 'normal':'4000k', 'low':'2000k'}, 'ab':'128k'}
 presets['480p'] = {'s':'854x480', 'b':{'high':'3000k', 'normal':'2000k', 'low':'1000k'}, 'ab':'128k'}
@@ -46,8 +47,12 @@ def ffmpeg_convert(item_abs, format, frame_size, bitrate):
     command = "export FFMPEG_DATADIR=" + ffmpeg_presets + "; "
     command += ffmpeg + " -threads 4 -i " + item_abs + " "
     command += "-vcodec " + formats[format]['vcodec'] + " "
-    command += "-s " + presets[frame_size]['s'] + " "
-    command += "-b " + presets[frame_size]['b'][bitrate] + " "
+    if frame_size != "same":
+        command += "-s " + presets[frame_size]['s'] + " "
+    if bitrate in ("high", "normal", "low"):
+        command += "-b " + presets[frame_size]['b'][bitrate] + " "
+    else:
+        command += "-b " + bitrate + " "
     command += "-acodec " + formats[format]['acodec'] + " "
     command += "-ab " + presets[frame_size]['ab'] + " "
     command += "-ar 48000 -ac 2 "
@@ -99,10 +104,10 @@ argparser.add_argument('-f', '--format', dest='output_format',
                         choices=['mp4', 'webm'], default='mp4',
                         help='video output format')
 argparser.add_argument('-s', '--size', dest='size',
-                        choices=presets.keys(), default='480p',
+                        choices=presets.keys(), default='same',
                         help='video frame size')
 argparser.add_argument('-b', '--bitrate', dest='bitrate',
-                        choices=['high', 'normal', 'low'], default='normal',
+                        default='normal',
                         help='video bitrate adjustment')
 argparser.add_argument('-r', '--recursive', dest='recursive', action='store_true',
                     default=False, help='recursively traverse the subtree')
